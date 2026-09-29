@@ -1,4 +1,5 @@
 import ModuleBar from "@/components/shell/ModuleBar";
+import "./hbu.css";
 
 export const metadata = {
   title: "HBU",

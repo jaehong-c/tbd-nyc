@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "market": "Manhattan, Midtown East and Lower Manhattan Class B office conversions",
+    "asOf": "2026-09",
+    "note": "Default market assumptions for the HBU engine. Every figure here is a starting point the user can override on screen. Calibrated against the 305 East 46th Street analysis (Apr 2026): rental conversion NOI about $5.4M, stabilized value about $108M at a 5.0% cap, conversion cost about $57M, yield on conversion cost 9.3%. Update the numbers, not the engine."
+  },
+  "office": {
+    "label": "Office repositioning",
+    "marketRentPSF": 62,
+    "marketRentBasis": "Class B Midtown East asking rents, 2026",
+    "stabilizedOccupancy": 0.85,
+    "opexPSF": 22,
+    "opexBasis": "Operating expenses excluding real estate taxes, $/RSF/yr",
+    "taxesPSF": 15,
+    "taxesBasis": "Full real estate taxes, $/RSF/yr; overridden by the building input when given",
+    "repositioningCapexPSF": 75,
+    "repositioningCapexBasis": "Lobby, elevators, systems, amenity floor; $/gross SF",
+    "leasingCostPSF": 100,
+    "leasingCostBasis": "Tenant improvements plus commissions on newly leased space, $/RSF",
+    "downtimeMonths": 18,
+    "capRate": 0.075,
+    "capRateBasis": "Stabilized Class B Manhattan office, 2026",
+    "profitTarget": 0.15,
+    "profitTargetBasis": "Developer margin on total cost used in the land residual"
+  },
+  "condo": {
+    "label": "Condo conversion",
+    "efficiency": 0.78,
+    "efficiencyBasis": "Sellable SF as a share of gross SF after cores, corridors, amenities",
+    "avgUnitSF": 950,
+    "selloutPSF": 1900,
+    "selloutBasis": "Blended sellout for a Midtown East conversion, $/sellable SF, 2026",
+    "hardCostPSF": 500,
+    "hardCostBasis": "Conversion hard cost, $/gross SF, condo finish level",
+    "softCostPct": 0.25,
+    "softCostBasis": "Design, permits, legal, insurance, developer overhead as a share of hard cost",
+    "contingencyPct": 0.075,
+    "contingencyBasis": "Share of hard cost",
+    "salesCostPct": 0.06,
+    "salesCostBasis": "Brokerage, marketing, transfer taxes and closing as a share of sellout",
+    "carryPct": 0.08,
+    "carryBasis": "Construction interest and carry as a share of hard plus soft cost",
+    "selloutMonths": 24,
+    "constructionMonths": 24,
+    "profitTarget": 0.18,
+    "profitTargetBasis": "Developer margin on gross sellout used in the land residual"
+  },
+  "rental": {
+    "label": "Multifamily rental conversion (467-m)",
+    "efficiency": 0.8,
+    "efficiencyBasis": "Rentable SF as a share of gross SF",
+    "avgUnitSF": 775,
+    "marketRentPSF": 85,
+    "marketRentBasis": "Market-rate rent for a Class B conversion product in Midtown East, $/RSF/yr, 2026",
+    "affordableShare": 0.25,
+    "affordableRentPerUnitMonth": 2400,
+    "affordableRentBasis": "Weighted average 80% AMI rent per unit per month under 467-m, 2026 income limits",
+    "vacancy": 0.04,
+    "opexPSF": 22,
+    "opexBasis": "Operating expenses excluding real estate taxes, $/RSF/yr",
+    "taxesPSF": 15,
+    "taxesBasis": "Full real estate taxes before exemption, $/RSF/yr; overridden by the building input when given",
+    "hardCostPSF": 290,
+    "hardCostBasis": "Conversion hard cost, $/gross SF, rental finish level; with soft, contingency and carry this lands near $400/gross SF all-in",
+    "softCostPct": 0.22,
+    "contingencyPct": 0.075,
+    "carryPct": 0.08,
+    "leaseUpMonths": 12,
+    "constructionMonths": 24,
+    "capRate": 0.05,
+    "capRateBasis": "Stabilized Manhattan multifamily with a long tax exemption, 2026",
+    "targetYieldOnCost": 0.065,
+    "targetYieldBasis": "Untrended yield on total cost a rental developer needs; drives the land residual"
+  },
+  "programs": {
+    "467m": {
+      "name": "467-m office-to-residential tax exemption",
+      "eligibility": "Commercial building built before 1991 in a district that permits residential; at least 25% of units affordable at a weighted average of 80% AMI with none above 100% AMI; construction start before mid-2031",
+      "exemptionBelow96": 0.9,
+      "exemptionOther": 0.65,
+      "yearsBelow96": 35,
+      "yearsOther": 35,
+      "cutoffYearBuilt": 1991,
+      "affordableShare": 0.25
+    },
+    "cityOfYes": {
+      "name": "City of Yes conversion eligibility",
+      "eligibility": "Buildings built before 1991 may convert to residential citywide in districts where residential is permitted, under the conversion rules of Article I, Chapter 5",
+      "cutoffYearBuilt": 1991
+    }
+  },
+  "recommendation": {
+    "rule": "Highest land residual value wins by default: that is the price a developer could pay for the building under each use. Ties within 5% go to the higher return on cost, then the shorter path to stabilization. The user can rank by value created (stabilized value or sellout over total cost) instead.",
+    "tieBandPct": 0.05,
+    "rankBy": "residual"
+  }
+}
