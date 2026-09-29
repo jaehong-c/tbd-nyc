@@ -1,4 +1,5 @@
 import ModuleBar from "@/components/shell/ModuleBar";
+import "./proforma.css";
 
 export const metadata = {
   title: "Pro Forma",

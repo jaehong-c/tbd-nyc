@@ -122,7 +122,7 @@ export default function HbuPage() {
 
               <div className="grid gap-5 lg:grid-cols-3">
                 {analysis.results.map((r) => (
-                  <ScenarioCard key={r.key} result={r} isWinner={r.key === analysis.recommendation.key} />
+                  <ScenarioCard key={r.key} result={r} isWinner={r.key === analysis.recommendation.key} building={building} />
                 ))}
               </div>
 

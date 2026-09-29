@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Working from "@/components/shell/Working";
 
 // Renders light markdown from the memo: paragraphs and **bold**.
 function renderInline(text) {
@@ -49,8 +50,9 @@ export default function MemoPanel({ payload, disabled }) {
           {busy ? "Writing" : memo ? "Rewrite" : "Write rationale"}
         </button>
       </div>
+      {busy && <Working label="Writing the rationale from the figures on this page." />}
       {error && <p className="mt-3 text-[13px] text-[var(--tier-3)]">{error}</p>}
-      {memo && (
+      {memo && !busy && (
         <div className="memo-body mt-4">
           {paras.map((p, i) => (
             <p key={i}>{renderInline(p)}</p>

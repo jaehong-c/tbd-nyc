@@ -9,7 +9,7 @@ export default function Comparison({ comparison, recommendation, rankBy, onRankB
     ["Cap rate", (c) => (c.capRate === null ? "n/a" : pct(c.capRate))],
     ["Stabilized value or sellout", (c) => money(c.value)],
     ["Conversion or repositioning cost", (c) => money(c.cost)],
-    ["Yield on cost", (c) => (c.yieldOnCost === null ? (c.marginOnCost !== null ? `${pct(c.marginOnCost)} margin` : "n/a") : pct(c.yieldOnCost))],
+    ["Yield on cost (margin for condo)", (c) => (c.yieldOnCost === null ? (c.marginOnCost !== null ? pct(c.marginOnCost) : "n/a") : pct(c.yieldOnCost))],
     ["Land residual", (c) => money(c.residual)],
     ["Land residual, $/SF", (c) => psf(c.residualPSF)],
     ["Time to stabilization", (c) => monthsLabel(c.monthsToStabilize)],

@@ -36,5 +36,7 @@ Environment variables (Vercel and `.env.local`):
 
 ## Status
 
-Phase 0 (shell, cover, NYC Wire) live. Zoning, HBU and Pro Forma engines
-follow in phases 3, 2 and 4.
+All four modules live: Zoning (live PLUTO and GeoSearch), HBU (three
+scenarios, land residual, rationale memo), Pro Forma (quarterly cash flow,
+capital calls, sensitivity, Excel export with live formulas), NYC Wire (daily
+digest). Method notes in docs/hbu-method.md.

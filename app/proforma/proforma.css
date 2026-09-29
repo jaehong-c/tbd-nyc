@@ -1,0 +1,170 @@
+/* Pro Forma module. Loaded by app/proforma/layout.js. */
+.app-proforma .field-input,
+.app-proforma .field-select {
+  width: 100%;
+  height: 34px;
+  padding: 0 10px;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-field);
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+.app-proforma .field-input:focus,
+.app-proforma .field-select:focus {
+  border-color: var(--ink);
+}
+.app-proforma .pf-grid {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .app-proforma .pf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.app-proforma .pf-sticky {
+  position: sticky;
+  top: 16px;
+}
+.app-proforma .kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+}
+@media (min-width: 700px) {
+  .app-proforma .kpi-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.app-proforma .kpi-label {
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+.app-proforma .kpi-value {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-top: 2px;
+}
+.app-proforma .kpi-value small {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-3);
+  margin-left: 4px;
+}
+.app-proforma .pf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.app-proforma .pf-table th,
+.app-proforma .pf-table td {
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.app-proforma .pf-table th {
+  font-weight: 500;
+  color: var(--ink-3);
+  border-top: none;
+  padding-bottom: 10px;
+}
+.app-proforma .pf-table th:first-child,
+.app-proforma .pf-table td:first-child,
+.app-proforma .pf-table th:nth-child(2),
+.app-proforma .pf-table td:nth-child(2) {
+  text-align: left;
+  color: var(--ink-2);
+}
+.app-proforma .pf-table td.neg {
+  color: var(--ink-2);
+}
+.app-proforma .pf-table tr.is-exit td {
+  font-weight: 600;
+  background: var(--fill);
+}
+.app-proforma .calls {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 120px;
+  padding-top: 8px;
+}
+.app-proforma .call {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 4px;
+  min-width: 0;
+}
+.app-proforma .call-bar {
+  width: 100%;
+  background: var(--ink);
+  border-radius: 3px 3px 0 0;
+}
+.app-proforma .call-bar.is-loan {
+  background: var(--fill-2);
+}
+.app-proforma .call-q {
+  font-size: 10.5px;
+  color: var(--ink-3);
+  font-family: var(--mono);
+}
+.app-proforma .grid-table td.is-base {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+  font-weight: 600;
+}
+.app-proforma .grid-table td.good { background: var(--tier-1-bg); }
+.app-proforma .grid-table td.warn { background: var(--tier-2-bg); }
+.app-proforma .grid-table td.bad { background: var(--tier-3-bg); }
+.app-proforma .milestone {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+}
+.app-proforma .milestone:first-of-type {
+  border-top: none;
+}
+.app-proforma .milestone .q {
+  font-family: var(--mono);
+  color: var(--ink-3);
+}
+.app-proforma .milestone small {
+  display: block;
+  color: var(--ink-3);
+  font-size: 12px;
+}
+.app-proforma .input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 118px;
+  gap: 10px;
+  align-items: center;
+  padding: 5px 0;
+}
+.app-proforma .input-row label {
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.app-proforma .input-row .field-input {
+  text-align: right;
+  height: 30px;
+  font-size: 12.5px;
+}

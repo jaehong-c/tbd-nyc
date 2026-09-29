@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { TOPICS } from "@/lib/news/topics";
+import Working from "@/components/shell/Working";
 
 function fmtDate(iso) {
   if (!iso) return "";
@@ -231,9 +232,10 @@ export default function Wire() {
               {digesting ? "Writing" : digestText ? "Rewrite" : "Write digest"}
             </button>
           </div>
-          {digestText ? (
+          {digesting && <Working label="Reading the headlines and writing three paragraphs." />}
+          {digestText && !digesting ? (
             <Digest text={digestText} items={items} />
-          ) : (
+          ) : digesting ? null : (
             <p className="wire-digest-empty">
               {digestError
                 ? digestError

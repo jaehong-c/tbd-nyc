@@ -6,6 +6,7 @@ import LotFacts from "@/components/zoning/LotFacts";
 import Envelope from "@/components/zoning/Envelope";
 import ProgramFlags from "@/components/zoning/ProgramFlags";
 import SendToHbu from "@/components/zoning/SendToHbu";
+import Working from "@/components/shell/Working";
 
 export default function ZoningPage() {
   const [busy, setBusy] = useState(false);
@@ -32,6 +33,12 @@ export default function ZoningPage() {
     <main className="mx-auto max-w-7xl px-6 pt-8 pb-12">
       <div className="grid gap-5">
         <AddressSearch onSearch={lookup} busy={busy} />
+        {busy && (
+          <div className="card">
+            <p className="eyebrow mb-1">Looking up the lot</p>
+            <Working label="Resolving the address with NYC GeoSearch, then reading the MapPLUTO record." hint="Usually 2 to 5 seconds." />
+          </div>
+        )}
         {error && (
           <div className="card">
             <p className="eyebrow mb-1">Lookup failed</p>
