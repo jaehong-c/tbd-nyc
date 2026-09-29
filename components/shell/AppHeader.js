@@ -3,26 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BRAND, MODULES } from "@/lib/brand";
-import ModuleIcon from "@/components/shell/ModuleIcon";
 
-const homeStyle = (active) => ({
-  display: "inline-flex",
-  alignItems: "center",
-  height: 30,
-  padding: "0 12px",
-  marginRight: 8,
-  borderRadius: "var(--radius-pill)",
-  fontSize: 12.5,
-  fontWeight: active ? 600 : 500,
-  color: active ? "var(--ink)" : "var(--ink-2)",
-  background: active ? "var(--fill)" : "transparent",
-  textDecoration: "none",
-  whiteSpace: "nowrap",
-});
-
+// Text links with air between them, one accent underline on the active
+// page, and a single call to action on the right.
 export default function AppHeader() {
   const path = usePathname();
-  const onHome = path === "/";
+  const links = [
+    { href: "/", label: "Home", active: path === "/" },
+    { href: "/about", label: "About", active: path === "/about" },
+    ...MODULES.map((m) => ({
+      href: m.href,
+      label: m.name,
+      active: path === m.href || path.startsWith(m.href + "/"),
+    })),
+  ];
 
   return (
     <header className="shell-header">
@@ -35,27 +29,21 @@ export default function AppHeader() {
         </Link>
 
         <nav className="shell-nav" aria-label="Suite" style={{ display: "flex", alignItems: "center" }}>
-          <Link href="/" style={homeStyle(onHome)} aria-current={onHome ? "page" : undefined}>
-            Home
-          </Link>
-          <div className="shell-modules">
-            {MODULES.map((m) => {
-              const active = path === m.href || path.startsWith(m.href + "/");
-              return (
-                <Link
-                  key={m.key}
-                  href={m.href}
-                  className={`shell-module${active ? " is-active" : ""}`}
-                  aria-current={active ? "page" : undefined}
-                  style={{ gap: 7 }}
-                >
-                  <ModuleIcon moduleKey={m.key} size={14} />
-                  <span className="shell-module-long">{m.name}</span>
-                  <span className="shell-module-short">{m.nav}</span>
-                </Link>
-              );
-            })}
+          <div className="shell-nav-links">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`shell-nav-link${l.active ? " is-active" : ""}`}
+                aria-current={l.active ? "page" : undefined}
+              >
+                {l.label}
+              </Link>
+            ))}
           </div>
+          <Link href="/zoning" className="shell-nav-cta">
+            Look up a lot
+          </Link>
         </nav>
       </div>
     </header>
