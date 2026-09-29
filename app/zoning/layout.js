@@ -1,4 +1,5 @@
 import ModuleBar from "@/components/shell/ModuleBar";
+import "./zoning.css";
 
 export const metadata = {
   title: "Zoning",

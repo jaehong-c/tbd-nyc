@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { runHbu, ASSUMPTIONS } from "@/lib/hbu/engine";
 import BuildingForm, { SAMPLE_BUILDING } from "@/components/hbu/BuildingForm";
 import Programs from "@/components/hbu/Programs";
@@ -24,10 +24,34 @@ const EMPTY_BUILDING = {
   currentUse: "office",
 };
 
+const LOT_KEY = "tbd.lot";
+
 export default function HbuPage() {
   const [building, setBuilding] = useState(SAMPLE_BUILDING);
   const [overrides, setOverrides] = useState({});
   const [rankBy, setRankBy] = useState("residual");
+  const [fromZoning, setFromZoning] = useState(null);
+
+  // A lot handed over from Zoning (localStorage) replaces the sample.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(LOT_KEY);
+      if (!raw) return;
+      const lot = JSON.parse(raw);
+      if (lot && Number(lot.grossSF) > 0) {
+        setBuilding({ ...SAMPLE_BUILDING, ...lot, taxesPSF: lot.taxesPSF || SAMPLE_BUILDING.taxesPSF, acquisitionBasis: "" });
+        setFromZoning(lot);
+      }
+    } catch {}
+  }, []);
+
+  function dropLot() {
+    try {
+      localStorage.removeItem(LOT_KEY);
+    } catch {}
+    setFromZoning(null);
+    setBuilding(SAMPLE_BUILDING);
+  }
 
   const ready = Number(building.grossSF) > 0;
   const analysis = useMemo(
@@ -48,10 +72,25 @@ export default function HbuPage() {
     <main className="mx-auto max-w-7xl px-6 pt-8 pb-12">
       <div className="hbu-grid">
         <aside className="hbu-sticky">
+          {fromZoning && (
+            <div className="card card-tight mb-3">
+              <p className="eyebrow mb-1">From Zoning</p>
+              <p className="text-[13px] text-[var(--ink-2)]">
+                {fromZoning.address || `BBL ${fromZoning.bbl}`}. Gross SF, floors, year built and zoning came from PLUTO;
+                taxes are a default and basis is blank.
+              </p>
+              <button type="button" className="btn btn-ghost btn-sm mt-2" onClick={dropLot}>
+                Back to sample
+              </button>
+            </div>
+          )}
           <BuildingForm
             value={building}
             onChange={setBuilding}
-            onLoadSample={() => setBuilding(SAMPLE_BUILDING)}
+            onLoadSample={() => {
+              setFromZoning(null);
+              setBuilding(SAMPLE_BUILDING);
+            }}
           />
           {analysis && <Programs programs={analysis.programs} />}
           <button
