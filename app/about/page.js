@@ -32,13 +32,14 @@ export default function AboutSuite() {
             the finance to answer it. This suite is where the two sides meet.
           </p>
           <p>
-            The immediate origin was an interview assignment in April 2026 for a Manhattan investment sales
-            team: write a highest and best use analysis of a Class B Midtown East office building as an
-            automated procedure, then run it. The procedure lived as two documents, one for the method and one
-            for the New York assumptions. It worked, but it was only the middle of the problem. Before the
-            valuation you need to know what the zoning allows; after it you need to know whether the winning
-            use pencils quarter by quarter and when the money is called. {BRAND.name} is that whole path as
-            software, built on the city&apos;s own data so every number can be traced to its source.
+            The immediate origin was a proposal that came my way in April 2026 from a Manhattan investment
+            sales team: build an AI screening tool that could take a Class B Midtown East office building and
+            return a highest and best use analysis the same way every time. The first version was a written
+            procedure in two documents, one for the method and one for the New York assumptions, and a model
+            that ran it. It worked, but it covered only the middle of the problem. Before the valuation you
+            need to know what the zoning allows; after it you need to know whether the winning use pencils
+            quarter by quarter and when the money is called. {BRAND.name} is that whole path as software,
+            built on the city&apos;s own data so every number can be traced to its source.
           </p>
           <p>
             Two rules shaped it. Every figure on screen comes from a published rule over public data or from an
